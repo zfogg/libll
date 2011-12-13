@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 #define LL_value_t char
-#define LL_value_t_TRUE
-#define LL_value_t_FALSE
+#define LL_value_t_TRUE  0x01
+#define LL_value_t_FALSE 0x00
 
 typedef struct node {
     LL_value_t value;
@@ -20,7 +20,7 @@ nodePtr     LL_reverse(nodePtr head, nodePtr prev);
 nodePtr     LL_ofIndex(nodePtr head, int index);
 int         LL_indexOf(nodePtr head, nodePtr n);
 
-LL_value_t  LL_findValue(nodePtr head, LL_value_t value);
+nodePtr     LL_findByValue(nodePtr head, LL_value_t value);
 nodePtr     LL_find(nodePtr head, nodePtr n);
 nodePtr     LL_findBefore(nodePtr head, nodePtr n);
 
@@ -80,10 +80,10 @@ int LL_indexOf(nodePtr head, nodePtr n) {
     else
         return -1;
 }
-LL_value_t LL_findValue(nodePtr head, LL_value_t value) {
+nodePtr LL_findByValue(nodePtr head, LL_value_t value) {
     while(head && head->value != value)
         head = head->next;
-    return head->value;
+    return head;
 }
 nodePtr LL_find(nodePtr head, nodePtr n) {
     while(head && head != n)

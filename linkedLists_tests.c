@@ -140,7 +140,7 @@ void LL_indexOf_test(int count) {
 void LL_find_test(int count) {
     nodePtr head = newTestLL(count);
     nodePtr indexedN = LL_ofIndex(head, LL_length(head) / 2);
-    LL_value_t indexedNValue = LL_findValue(head, indexedN->value);
+    LL_value_t indexedNValue = LL_findByValue(head, indexedN->value)->value;
     processTestResults("find: value in list", indexedNValue == indexedN->value);
     LL_free(&head, &indexedN);
     processTestResults("find: value not in list", LL_find(head, indexedN) == NULL);
