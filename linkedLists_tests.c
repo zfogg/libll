@@ -96,19 +96,21 @@ void LL_length_test(int count) {
 //}
 void LL_reverse_test(int count) {
     nodePtr head = newTestLL(count), n, newHead;
-    for (n = head, newHead = NULL; n; n = n->next)
-        LL_push(&newHead, n->value);
+    for (n = head, newHead = NULL; n; n = n->next) {
+       if (n)
+           LL_append(&newHead, n->value);
+    }
 
     int results = 1;
     head = LL_reverse(head, NULL);
     results &= newHead->value == LL_last(head)->value;
 
     head = LL_reverse(head, NULL); // Reverse back to how it was before this function.
-    n = head;
-    nodePtr tempNewHead = newHead;
+    nodePtr tempHead = head,
+            tempNewHead = newHead;
     do
-        results &= tempNewHead->value == n->value;
-    while ((tempNewHead = tempNewHead->next) && (n = n->next));
+        results &= tempNewHead->value == tempHead->value;
+    while ((tempNewHead = tempNewHead->next) && (tempHead = tempHead->next));
 
     processTestResults("reverse", results);
     LL_freeAll(&head);

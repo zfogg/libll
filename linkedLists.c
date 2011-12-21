@@ -26,6 +26,7 @@ nodePtr     LL_findBefore(nodePtr head, nodePtr n);
 
 // Level 1
 nodePtr     LL_push(nodePtr* headPtr, LL_value_t value);
+nodePtr     LL_append(nodePtr* headPtr, LL_value_t value);
 LL_value_t  LL_pop(nodePtr* headPtr);
 nodePtr     LL_free(nodePtr* headPtr, nodePtr* nPtr);
 
@@ -64,8 +65,9 @@ int LL_length(nodePtr head) {
     return head ? 1 + LL_length(head->next) : 0;
 }
 nodePtr LL_last(nodePtr n) {
-    while (n->next)
-        n = n->next;
+    if (n)
+        while (n->next)
+            n = n->next;
     return n;
 }
 nodePtr LL_ofIndex(nodePtr head, int index) {
@@ -112,17 +114,24 @@ nodePtr LL_reverse(nodePtr head, nodePtr prev) {
 }
 
 // Level 1
-nodePtr LL_push(nodePtr* headPtr, LL_value_t value) {
+nodePtr LL_newNode(LL_value_t value) {
     nodePtr n = malloc(sizeof(node));
-
-    n->next = NULL;
     n->value = value;
-
+    return n;
+}
+nodePtr LL_push(nodePtr* headPtr, LL_value_t value) {
+    nodePtr n = LL_newNode(value);
+    n->next = *headPtr ? *headPtr : NULL;
+    *headPtr = n;
+    return n;
+}
+nodePtr LL_append(nodePtr* headPtr, LL_value_t value) {
+    nodePtr n = LL_newNode(value);
+    n->next = NULL;
     if (*headPtr)
         LL_last(*headPtr)->next = n;
     else
         *headPtr = n;
-
     return n;
 }
 LL_value_t LL_pop(nodePtr* headPtr) {
@@ -172,7 +181,7 @@ void LL_freeAll(nodePtr* headPtr) {
     *headPtr = NULL;
 }
 nodePtr LL_findAll(nodePtr head, LL_value_t value) {
-    nodePtr n = head,
+    nodePtr n       = head,
             newHead = NULL;
     do
         if (n->value == value)
@@ -194,7 +203,6 @@ void LL_moveNode(nodePtr *head1, nodePtr* head2) {
             n        = LL_unlink(head1, &lastNode);
     LL_last(*head2)->next = n;
 }
-
 
 // Level 2
 nodePtr LL_pushMany(nodePtr* headPtr, LL_value_t* values, int count) {
@@ -226,8 +234,8 @@ void LL_freeMany(nodePtr* headPtr, nodePtr* startPtr, int count) {
         LL_freeAll(startPtr);
     }
     else {
-        nodePtr end = LL_ofIndex(*startPtr, count),
-                n = (*startPtr),
+        nodePtr end         = LL_ofIndex(*startPtr, count),
+                n           = (*startPtr),
                 beforeStart = LL_findBefore(*headPtr, *startPtr);
         while (n->next != end)
             n = LL_free(startPtr, &n);
