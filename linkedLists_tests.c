@@ -172,7 +172,7 @@ void LL_push_test(int count) {
 }
 void LL_pop_test(int count) {
     nodePtr head = newTestLL(count),
-            n = head;
+            n    = head;
     while (n->next)
         n = n->next;
     LL_value_t nVal = n->value;
@@ -336,7 +336,7 @@ LL_value_t* testF_Values;
 int forEach_validationCallback_results;
 void LL_forEach_test(int count) {
     nodePtr head = newTestLL(count),
-            n = head;
+            n    = head;
     int i, len = LL_length(head);
     testF_Values = malloc(len * sizeof(LL_value_t));
     for (i = 0; i < len; i++, n = n->next)
