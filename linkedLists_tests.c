@@ -64,7 +64,7 @@ int main(int argc, const char* argv[]) {
     LL_freeAll_test(testValue);
     LL_findAll_test(testValue);
 // Level 2
-    LL_pushMany_test(testValue);
+    //LL_pushMany_test(testValue);
     LL_popMany_test(testValue);
     LL_freeMany_test(testValue);
     LL_insertAfter_test(testValue);
@@ -277,9 +277,9 @@ void LL_findAll_test(int count) {
 }
 
 // Level 2
-void LL_pushMany_test(num) {
-
-}
+//void LL_pushMany_test(num) {
+//
+//}
 void LL_popMany_test(int count) {
     nodePtr head = newTestLL(count);
     int index = count / 2;
