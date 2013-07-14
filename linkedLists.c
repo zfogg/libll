@@ -64,11 +64,8 @@ void        LL_logCompareF(nodePtr n);
 int LL_length(nodePtr head) {
     return head ? 1 + LL_length(head->next) : 0;
 }
-nodePtr LL_last(nodePtr n) {
-    if (n)
-        while (n->next)
-            n = n->next;
-    return n;
+nodePtr LL_last(nodePtr head) {
+    return head->next ? LL_last(head->next) : head;
 }
 nodePtr LL_ofIndex(nodePtr head, int index) {
     if (head && index >= 0)
