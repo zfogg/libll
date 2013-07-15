@@ -9,8 +9,8 @@ this library are both speed and comprehensive code.
 Building
 ------------
 
-Run `make` in the root directory to build a shared library. It will be placed
-in `./bin/`, and named `libll.so`.
+Run `make` in the root directory to build the project as a a shared library.
+It will be placed in `./bin/`, and will be named `libll.so`.
 
 
 Testing
