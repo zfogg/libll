@@ -1,43 +1,8 @@
-#include "linkedLists.c"
 #include <stdlib.h>
+#include <stdio.h>
 
-// Level 0
-void LL_length_test(int count);
-//void LL_last_test(int count);
-void LL_reverse_test(int count);
-void LL_ofIndex_test(int count);
-void LL_indexOf_test(int count);
-void LL_find_test(int count);
-void LL_findBefore_test(int count);
-
-// Level 1
-void LL_push_test(int count);
-void LL_pop_test(int count);
-void LL_free_test(int count);
-void LL_concat_test(int count);
-void LL_lastN_test(int count);
-void LL_toArray_test(int count);
-void LL_split_test(int count);
-void LL_freeAll_test(int count);
-void LL_findAll_test(int count);
-
-// Level 2
-void LL_pushMany_test(int count);
-void LL_popMany_test(int count);
-void LL_freeMany_test(int count);
-void LL_insertAtIndex_test(int count);
-void LL_insertAfter_test(int count);
-
-// Level 3
-void LL_forEach_test(int count);
-void forEach_callback(nodePtr* head, nodePtr n);
-void forEach_validationCallback(nodePtr* head, nodePtr n);
-
-// Diagnostics
-void processTestResults(char* testName, int results);
-int testResults = 1;
-char randTestVal();
-nodePtr newTestLL(int count);
+#include "../lib/ll.h"
+#include "ll_tests.h"
 
 
 int main(int argc, const char* argv[]) {
@@ -45,7 +10,7 @@ int main(int argc, const char* argv[]) {
 
     puts("\nTesting linked list functionality . . .\n");
 
-// Level 0
+    // Level 0
     LL_length_test(testValue);
     //LL_last_test(testValue);
     LL_reverse_test(testValue);
@@ -53,7 +18,7 @@ int main(int argc, const char* argv[]) {
     LL_indexOf_test(testValue);
     LL_find_test(testValue);
     LL_findBefore_test(testValue);
-// Level 1
+    // Level 1
     LL_push_test(testValue);
     LL_pop_test(testValue);
     LL_free_test(testValue);
@@ -63,16 +28,16 @@ int main(int argc, const char* argv[]) {
     LL_split_test(testValue);
     LL_freeAll_test(testValue);
     LL_findAll_test(testValue);
-// Level 2
+    // Level 2
     //LL_pushMany_test(testValue);
     LL_popMany_test(testValue);
     LL_freeMany_test(testValue);
     LL_insertAfter_test(testValue);
     LL_insertAtIndex_test(testValue);
-// Level 3
+    // Level 3
     LL_forEach_test(testValue);
 
-// Diagnostics
+    // Diagnostics
     puts("");
     processTestResults("Pass ALL the tests", testResults);
 
@@ -101,8 +66,8 @@ void LL_length_test(int count) {
 void LL_reverse_test(int count) {
     nodePtr head = newTestLL(count), n, newHead;
     for (n = head, newHead = NULL; n; n = n->next) {
-       if (n)
-           LL_append(&newHead, n->value);
+        if (n)
+            LL_append(&newHead, n->value);
     }
 
     int results = 1;
@@ -132,9 +97,9 @@ void LL_ofIndex_test(int count) {
 
     processTestResults("ofIndex: elems", elemsResults);
     processTestResults("ofIndex: negative index",
-        NULL == LL_ofIndex(head, -1));
+            NULL == LL_ofIndex(head, -1));
     processTestResults("ofIndex: NULL head",
-        NULL == LL_ofIndex(NULL, index));
+            NULL == LL_ofIndex(NULL, index));
 
     LL_freeAll(&head);
 }
@@ -142,7 +107,7 @@ void LL_ofIndex_test(int count) {
 void LL_indexOf_test(int count) {
     int index = count / 2;
     nodePtr head = newTestLL(count),
-        n = head;
+            n = head;
 
     int i, results;
     for (i = 0, results = 1; i <= index ; i++, n = n->next)
@@ -150,9 +115,9 @@ void LL_indexOf_test(int count) {
 
     processTestResults("indexOf: elems", results);
     processTestResults("indexOf: NULL elem",
-        -1 == LL_indexOf(head, NULL));
+            -1 == LL_indexOf(head, NULL));
     processTestResults("indexOf: NULL head",
-        -1 == LL_indexOf(NULL, head->next));
+            -1 == LL_indexOf(NULL, head->next));
 
     LL_freeAll(&head);
 }
@@ -164,11 +129,11 @@ void LL_find_test(int count) {
     LL_value_t indexedNValue = LL_findByValue(head, indexedN->value)->value;
 
     processTestResults("find: value in list",
-        indexedNValue == indexedN->value);
+            indexedNValue == indexedN->value);
     LL_free(&head, &indexedN);
 
     processTestResults("find: value not in list",
-        LL_find(head, indexedN) == NULL);
+            LL_find(head, indexedN) == NULL);
     LL_freeAll(&head);
 }
 
@@ -176,9 +141,9 @@ void LL_findBefore_test(int count) {
     nodePtr head = newTestLL(count);
 
     processTestResults("findBefore: head",
-        LL_findBefore(head, head) == NULL);
+            LL_findBefore(head, head) == NULL);
     processTestResults("findBefore: elem",
-        LL_findBefore(head, head->next->next) == head->next);
+            LL_findBefore(head, head->next->next) == head->next);
 
     LL_freeAll(&head);
 }
@@ -223,12 +188,12 @@ void LL_free_test(int count) {
     LL_value_t headValue = head->value;
     LL_free(&head, &head);
     processTestResults("free: deallocate head",
-        headValue != head->value);
+            headValue != head->value);
 
     nodePtr n = LL_ofIndex(head, count / 2);
     LL_free(&head, &n);
     processTestResults("free: deallocate elem",
-        LL_indexOf(head, n) == LL_length(head)-1);
+            LL_indexOf(head, n) == LL_length(head)-1);
 
     LL_freeAll(&head);
 }
@@ -280,8 +245,8 @@ void LL_toArray_test(int count) {
 }
 
 void LL_split_test(int count) {
-     nodePtr head = newTestLL(count),
-             backHalf;
+    nodePtr head = newTestLL(count),
+            backHalf;
 
     int len = LL_length(head);
     len += len % 2 ? 1 : 0;
@@ -306,14 +271,14 @@ void LL_split_test(int count) {
     head = newTestLL(17);
     LL_split(&head, &backHalf);
     processTestResults("split - odd:  [a] > [b]",
-        LL_length(head) == 1+LL_length(backHalf));
+            LL_length(head) == 1+LL_length(backHalf));
     LL_freeAll(&head);
     LL_freeAll(&backHalf);
 
     head = newTestLL(18);
     LL_split(&head, &backHalf);
     processTestResults("split - even: [a] = [b]",
-        LL_length(head) == LL_length(backHalf));
+            LL_length(head) == LL_length(backHalf));
     LL_freeAll(&head);
     LL_freeAll(&backHalf);
 }
@@ -343,7 +308,7 @@ void LL_popMany_test(int count) {
     nodePtr head = newTestLL(count);
     int index = count / 2;
     LL_value_t* lastCountValues   = LL_toArray(LL_lastN(head, index)),
-              * poppedCountValues = LL_popMany(&head, index);
+        * poppedCountValues = LL_popMany(&head, index);
 
     int results, i;
     for (results = 1, i = 0; i < index; i++)
@@ -387,7 +352,7 @@ void LL_insertAtIndex_test(int count) {
     LL_insertAtIndex(&head, head->value, 0);
 
     processTestResults("insertAtIndex - before head",
-        head->value == head->next->value);
+            head->value == head->next->value);
 
     // A value several nodes into the list.
     LL_value_t valueToFind = head->next->next->value;
@@ -396,7 +361,7 @@ void LL_insertAtIndex_test(int count) {
     nodePtr afterInsert = LL_findAll(head, valueToFind);
 
     processTestResults("insertAtIndex - between nodes",
-        LL_length(beforeInsert)+1 == LL_length(afterInsert));
+            LL_length(beforeInsert)+1 == LL_length(afterInsert));
     LL_freeAll(&beforeInsert);
     LL_freeAll(&afterInsert);
 
@@ -405,7 +370,7 @@ void LL_insertAtIndex_test(int count) {
     nodePtr newLast = LL_last(head);
 
     processTestResults("insertAtIndex - after last",
-        last != newLast && last->value == newLast->value);
+            last != newLast && last->value == newLast->value);
     LL_freeAll(&head);
 }
 
@@ -469,7 +434,7 @@ nodePtr newTestLL(int count) {
     int i, j;
     for (i = 1, j = 0; i < count; i++, j++)
         LL_push(&head, randTestVal());
-        // Assuming LL_value_t is of type int.
+    // Assuming LL_value_t is of type int.
 
     return head;
 }
