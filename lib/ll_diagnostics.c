@@ -7,9 +7,6 @@ void LL_log(nodePtr head) {
 
 
 // Log strings depend on the type of LL_value_t.
-char* const LL_logF_logString       = "n:[%p]->value[%c]\n";
-char* const LL_logCompare_logString = "n:[%p]->value[%c]\t";
-
 void LL_logF(nodePtr* headPtr, nodePtr n) {
     printf(LL_logF_logString, n, n->value);
 }

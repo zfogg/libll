@@ -1,32 +1,37 @@
 #!/bin/make
 
 
-GCC=gcc -Wall -Werror -O2
+GCC      =gcc -Wall -Werror -O2
+
+LL_O     =build/ll.o
+
+LIBLL_SO =build/libll.so
+
+TESTS    =bin/tests
 
 
-all: bin/libll.so
+all: $(LIBLL_SO)
+
+test: $(TESTS)
+	export LD_LIBRARY_PATH=${PWD}/build; \
+	$(TESTS)
 
 clean:
-	rm bin/libll.so
-	rm bin/tests
-
-test: bin/tests
-	export LD_LIBRARY_PATH=${PWD}/bin; \
-	bin/tests
+	rm -r build bin
 
 
 bin/:
-	if [ ! -d ./bin ]; then \
-		mkdir bin; \
-	fi
+	mkdir bin
 
-ll.o:
-	$(GCC) -c -fpic lib/ll.c
+build/:
+	mkdir build
 
-bin/libll.so: bin/ ll.o
-	$(GCC) -shared -o bin/libll.so ll.o
-	rm ll.o
+$(LL_O):
+	$(GCC) -c -fpic lib/ll.c -o $(LL_O)
 
-bin/tests: bin/libll.so
-	$(GCC) test/ll_tests.c -o bin/tests -L./bin -lll
+$(LIBLL_SO): build/ $(LL_O)
+	$(GCC) -shared -o $(LIBLL_SO) $(LL_O)
+
+$(TESTS): bin/ $(LIBLL_SO)
+	$(GCC) test/ll_tests.c -o $(TESTS) -L./build -lll
 
