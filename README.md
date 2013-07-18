@@ -10,7 +10,15 @@ Building
 ------------
 
 Run `make` in the root directory to build the project as a a shared library.
-It will be placed in `./bin/`, and will be named `libll.so`.
+It will be placed in `./build/`, and will be named `libll.so`.
+
+
+Documentation
+------------
+
+I will eventually write documentation for the functionality of this library.
+For now, refer to to the header file ``./lib/ll.h` to see prototypes of
+the available functions.
 
 
 Testing
