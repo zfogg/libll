@@ -3,7 +3,7 @@ void processTestResults(char* testName, int results) {
     char* color = results ? GREEN_CC : RED_CC;
     char* text  = results ? "pass" : "fail";
     printf("\tTesting - %-30s: %s%s%s\n", testName, color, text, WHITE_CC);
-    testResults &= results;
+    LL_testResults &= results;
 }
 
 

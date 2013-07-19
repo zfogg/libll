@@ -12,6 +12,8 @@
 #include "ll_tests_diagnostics.c"
 
 
+int LL_testResults = 1;
+
 int main(int argc, const char* argv[]) {
     int const testValue = argc > 1 ? atoi(argv[1]) : 9377;
 
@@ -49,7 +51,7 @@ int main(int argc, const char* argv[]) {
 
     // Diagnostics
     puts("");
-    processTestResults("Pass ALL the tests", testResults);
+    processTestResults("Pass ALL the tests", LL_testResults);
 
     return 0;
 }

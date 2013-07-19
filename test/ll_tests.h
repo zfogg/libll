@@ -74,7 +74,7 @@ void forEach_validationCallback (nodePtr* head, nodePtr n);
 
 #define RED_CC   "\e[31m"
 
-int testResults = 1;
+extern int LL_testResults;
 
 void processTestResults         (char* testName, int results);
 

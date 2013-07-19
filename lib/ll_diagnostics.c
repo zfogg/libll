@@ -8,7 +8,7 @@ void LL_log(nodePtr head) {
 
 // Log strings depend on the type of LL_value_t.
 void LL_logF(nodePtr* headPtr, nodePtr n) {
-    printf(LL_logF_logString, n, n->value);
+    printf(LL_LOGF_LOGSTRING, n, n->value);
 }
 
 
@@ -23,6 +23,6 @@ void LL_logCompare(nodePtr head1, nodePtr head2) {
 
 
 void LL_logCompareF(nodePtr n) {
-    printf(LL_logCompare_logString, n, n->value);
+    printf(LL_LOGCOMPARE_LOGSTRING, n, n->value);
 }
 

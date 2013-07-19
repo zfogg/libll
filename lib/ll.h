@@ -83,9 +83,9 @@ void        LL_forEachRef    (nodePtr* headPtr, void                            
 
 // Diagnostics
 
-const char* LL_logF_logString       = "n:[%p]->value[%c]\n",
+#define LL_LOGF_LOGSTRING       "n:[%p]->value[%c]\n"
 
-          * LL_logCompare_logString = "n:[%p]->value[%c]\t";
+#define LL_LOGCOMPARE_LOGSTRING "n:[%p]->value[%c]\t"
 
 void        LL_log           (nodePtr head);
 
