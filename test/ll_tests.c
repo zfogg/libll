@@ -53,6 +53,6 @@ int main(int argc, const char* argv[]) {
     puts("");
     processTestResults("Pass ALL the tests", LL_testResults);
 
-    return 0;
+    return !LL_testResults;
 }
 
