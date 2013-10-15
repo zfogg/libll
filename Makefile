@@ -16,16 +16,13 @@ TESTS = $(BIN_DIR)/ll_tests
 export LD_LIBRARY_PATH=$(OUT_DIR)
 
 
-all: directories $(OUT_DIR)/libll.so
+all: $(OUT_DIR)/libll.so
 
 clean:
-	@rm -rf $(OUT_DIR) $(BIN_DIR)
+	@rm -rf $(OUT_DIR)/* $(BIN_DIR)/*
 
 test: $(TESTS)
 	$(TESTS)
-
-
-directories: $(OUT_DIR)/ $(BIN_DIR)/
 
 
 $(OUT_DIR)/%.o:
@@ -36,8 +33,3 @@ $(OUT_DIR)/%.so: $(OUT_DIR)/ll.o
 
 $(TESTS): all
 	$(CLANG) ./test/ll_tests.c -o $(TESTS) -L$(OUT_DIR) -lll
-
-
-%/:
-	@mkdir -p $@
-
