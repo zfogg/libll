@@ -1,4 +1,4 @@
-#include "../lib/ll.h"
+#include "../src/ll.h"
 #include "ll_tests.h"
 
 

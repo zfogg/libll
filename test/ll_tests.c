@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../lib/ll.h"
+#include "../src/ll.h"
 #include "ll_tests.h"
 
 #include "ll_tests_0.c"

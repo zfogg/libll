@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 
-SRC_DIR = lib
+SRC_DIR = src
 
 OUT_DIR = build
 
@@ -19,7 +19,7 @@ export LD_LIBRARY_PATH=$(OUT_DIR)
 all: directories $(OUT_DIR)/libll.so
 
 clean:
-	rm -rf $(OUT_DIR) $(BIN_DIR)
+	@rm -rf $(OUT_DIR) $(BIN_DIR)
 
 test: $(TESTS)
 	$(TESTS)
@@ -39,5 +39,5 @@ $(TESTS): all
 
 
 %/:
-	mkdir -p $@
+	@mkdir -p $@
 

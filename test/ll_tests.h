@@ -1,7 +1,7 @@
 #ifndef ll_tests_h__
 #define ll_tests_h__
 
-#include "../lib/ll.h"
+#include "../src/ll.h"
 
 
 // Level 0

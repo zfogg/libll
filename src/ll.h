@@ -95,6 +95,4 @@ void        LL_logCompare    (nodePtr head1, nodePtr head2);
 
 void        LL_logCompareF   (nodePtr n);
 
-
 #endif // ll_h__
-

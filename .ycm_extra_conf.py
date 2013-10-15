@@ -7,6 +7,7 @@ compilation_database_folder = ''
 
 flags = [
     '-std=c99',
+    '-stdlib=libc99',
     '-Wextra',
     '02',
     '-DUSE_CLANG_COMPLETER',
