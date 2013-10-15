@@ -2,11 +2,11 @@
 #define ll_h__
 
 
+#ifndef NULL
+#define NULL (0)
+#endif
+
 #define LL_value_t char
-
-#define LL_value_t_TRUE  0x01
-
-#define LL_value_t_FALSE 0x00
 
 
 typedef struct node {

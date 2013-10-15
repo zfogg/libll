@@ -1,3 +1,7 @@
+#include <stdio.h>
+
+#include "ll.h"
+
 
 void LL_log(nodePtr head) {
     puts("");
@@ -8,6 +12,7 @@ void LL_log(nodePtr head) {
 
 // Log strings depend on the type of LL_value_t.
 void LL_logF(nodePtr* headPtr, nodePtr n) {
+    (void)(headPtr);
     printf(LL_LOGF_LOGSTRING, n, n->value);
 }
 

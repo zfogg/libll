@@ -1,6 +1,11 @@
+#include <stdlib.h>
 
-void LL_pushMany_test(num) {
+#include "../lib/ll.h"
+#include "ll_tests.h"
 
+
+void LL_pushMany_test(int count) {
+  (void)(count);
 }
 
 

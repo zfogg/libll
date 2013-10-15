@@ -1,6 +1,8 @@
 #ifndef ll_tests_h__
 #define ll_tests_h__
 
+#include "../lib/ll.h"
+
 
 // Level 0
 
@@ -76,7 +78,7 @@ void forEach_validationCallback (nodePtr* head, nodePtr n);
 
 extern int LL_testResults;
 
-void processTestResults         (char* testName, int results);
+void processTestResults         (const char* testName, int results);
 
 nodePtr newTestLL               (int count);
 

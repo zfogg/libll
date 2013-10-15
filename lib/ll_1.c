@@ -1,6 +1,10 @@
+#include <stdlib.h>
+
+#include "ll.h"
+
 
 nodePtr LL_newNode(LL_value_t value) {
-    nodePtr n = malloc(sizeof(node));
+    nodePtr n = (nodePtr)malloc(sizeof(node));
     n->value = value;
     return n;
 }
@@ -59,7 +63,7 @@ nodePtr LL_lastN(nodePtr head, int count) {
 LL_value_t* LL_toArray(nodePtr head) {
     nodePtr n;
     int len = LL_length(head), i;
-    LL_value_t* values = malloc(len * sizeof(LL_value_t));
+    LL_value_t* values = (LL_value_t*)malloc(len * sizeof(LL_value_t));
     for (n = head, i = 0; n->next; n = n->next, i++)
         values[i] = n->value;
     return values;

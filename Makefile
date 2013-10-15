@@ -1,37 +1,43 @@
-#!/bin/make
+#!/usr/bin/make -f
 
 
-GCC      =gcc -Wall -Werror -O2
+SRC_DIR = lib
 
-LL_O     =build/ll.o
+OUT_DIR = build
 
-LIBLL_SO =build/libll.so
-
-TESTS    =bin/tests
+BIN_DIR = bin
 
 
-all: $(LIBLL_SO)
+CLANG = clang -std=c99 -Wextra -O2
 
-test: $(TESTS)
-	export LD_LIBRARY_PATH=${PWD}/build; \
-	$(TESTS)
+TESTS = $(BIN_DIR)/ll_tests
+
+
+export LD_LIBRARY_PATH=$(OUT_DIR)
+
+
+all: directories $(OUT_DIR)/libll.so
 
 clean:
-	rm -r build bin
+	rm -rf $(OUT_DIR) $(BIN_DIR)
+
+test: $(TESTS)
+	$(TESTS)
 
 
-bin/:
-	mkdir bin
+directories: $(OUT_DIR)/ $(BIN_DIR)/
 
-build/:
-	mkdir build
 
-$(LL_O):
-	$(GCC) -c -fpic lib/ll.c -o $(LL_O)
+$(OUT_DIR)/%.o:
+	$(CLANG) -c -fpic $(SRC_DIR)/$(*F).c -o $(OUT_DIR)/$(*F).o
 
-$(LIBLL_SO): build/ $(LL_O)
-	$(GCC) -shared -o $(LIBLL_SO) $(LL_O)
+$(OUT_DIR)/%.so: $(OUT_DIR)/ll.o
+	$(CLANG) -shared -o $(OUT_DIR)/$(*F).so $<
 
-$(TESTS): bin/ $(LIBLL_SO)
-	$(GCC) test/ll_tests.c -o $(TESTS) -L./build -lll
+$(TESTS): all
+	$(CLANG) ./test/ll_tests.c -o $(TESTS) -L$(OUT_DIR) -lll
+
+
+%/:
+	mkdir -p $@
 

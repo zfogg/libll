@@ -17,14 +17,14 @@ Documentation
 ------------
 
 I will eventually write documentation for the functionality of this library.
-For now, refer to to the header file ``./lib/ll.h` to see prototypes of
+For now, refer to to the header file `./lib/ll.h` to see prototypes of
 the available functions.
 
 
 Testing
 ------------
 
-To build and run the unit tests, run `make test`.
+To [re]build and run the unit tests, run `make clean test`.
 
 
 Contributing

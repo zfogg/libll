@@ -1,3 +1,8 @@
+#include <stdlib.h>
+
+#include "../lib/ll.h"
+#include "ll_tests.h"
+
 
 void LL_push_test(int count) {
     nodePtr head = NULL;

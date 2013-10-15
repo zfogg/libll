@@ -1,3 +1,5 @@
+#include "ll.h"
+
 
 nodePtr LL_pushMany(nodePtr* headPtr, LL_value_t* values, int count) {
     nodePtr newHead = LL_push(headPtr, values[0]);

@@ -1,3 +1,6 @@
+#include "../lib/ll.h"
+#include "ll_tests.h"
+
 
 void LL_length_test(int count) {
     nodePtr head = newTestLL(count);
@@ -15,7 +18,7 @@ void LL_length_test(int count) {
 
 
 void LL_last_test(int count) {
-
+  (void)(count);
 }
 
 

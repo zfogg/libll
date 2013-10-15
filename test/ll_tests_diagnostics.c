@@ -1,7 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
 
-void processTestResults(char* testName, int results) {
-    char* color = results ? GREEN_CC : RED_CC;
-    char* text  = results ? "pass" : "fail";
+#include "ll_tests.h"
+
+
+void processTestResults(const char* testName, int results) {
+    const char* color = results ? GREEN_CC : RED_CC;
+    const char* text  = results ? "pass" : "fail";
     printf("\tTesting - %-30s: %s%s%s\n", testName, color, text, WHITE_CC);
     LL_testResults &= results;
 }
