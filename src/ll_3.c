@@ -1,4 +1,8 @@
 #include "ll.h"
+#include "ll_0.h"
+#include "ll_1.h"
+#include "ll_2.h"
+#include "ll_3.h"
 
 
 void LL_forEach(nodePtr* headPtr, void (*callBack)(nodePtr*, nodePtr)) {

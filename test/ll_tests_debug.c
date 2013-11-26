@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../src/ll.h"
+#include "../src/ll_0.h"
+#include "../src/ll_1.h"
+#include "../src/ll_2.h"
+#include "../src/ll_3.h"
 #include "ll_tests.h"
+#include "ll_tests_debug.h"
 
 
 void processTestResults(const char* testName, int results) {

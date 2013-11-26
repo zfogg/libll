@@ -1,4 +1,5 @@
 #include "ll.h"
+#include "ll_0.h"
 
 
 int LL_length(nodePtr head) {

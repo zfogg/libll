@@ -1,6 +1,8 @@
 #include <stdlib.h>
 
 #include "ll.h"
+#include "ll_0.h"
+#include "ll_1.h"
 
 
 nodePtr LL_newNode(LL_value_t value) {

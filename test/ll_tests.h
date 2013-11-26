@@ -1,6 +1,3 @@
-#ifndef ll_tests_h__
-#define ll_tests_h__
-
 #include "../src/ll.h"
 
 
@@ -66,24 +63,3 @@ void LL_forEach_test            (int count);
 void forEach_callback           (nodePtr* head, nodePtr n);
 
 void forEach_validationCallback (nodePtr* head, nodePtr n);
-
-
-// Diagnostics
-
-#define WHITE_CC "\e[0m"
-
-#define GREEN_CC "\e[32m"
-
-#define RED_CC   "\e[31m"
-
-extern int LL_testResults;
-
-void processTestResults         (const char* testName, int results);
-
-nodePtr newTestLL               (int count);
-
-LL_value_t randTestVal          ();
-
-
-#endif // ll_tests_h__
-

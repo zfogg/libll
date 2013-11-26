@@ -1,4 +1,9 @@
+#include <stdlib.h>
+
 #include "ll.h"
+#include "ll_0.h"
+#include "ll_1.h"
+#include "ll_2.h"
 
 
 nodePtr LL_pushMany(nodePtr* headPtr, LL_value_t* values, int count) {

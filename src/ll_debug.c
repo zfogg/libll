@@ -1,6 +1,11 @@
 #include <stdio.h>
 
 #include "ll.h"
+#include "ll_0.h"
+#include "ll_1.h"
+#include "ll_2.h"
+#include "ll_3.h"
+#include "ll_debug.h"
 
 
 void LL_log(nodePtr head) {

@@ -1,15 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../src/ll.h"
 #include "ll_tests.h"
-
-#include "ll_tests_0.c"
-#include "ll_tests_1.c"
-#include "ll_tests_2.c"
-#include "ll_tests_3.c"
-
-#include "ll_tests_diagnostics.c"
+#include "ll_tests_debug.h"
 
 
 int LL_testResults = 1;
