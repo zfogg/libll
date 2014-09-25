@@ -13,7 +13,7 @@ TEST_D = test
 CC = clang -std=c99 -Wextra -O2
 
 
-T = ll
+LIB = ll
 
 
 OBJECTS = $(patsubst $(SRC_D)/%.c, $(OUT_D)/%.o, $(wildcard $(SRC_D)/*.c))
@@ -25,14 +25,14 @@ HEADERS = $(wildcard $(SRC_D)/*.h)
 HEADERS_T = $(wildcard $(TEST_D)/*.h)
 
 
-TARGET = $(OUT_D)/lib$(T).so
+TARGET = $(OUT_D)/lib$(LIB).so
 
 TESTS = $(BIN_D)/ll_tests
 
 
 export LD_LIBRARY_PATH=$(OUT_D)
 
-.PHONY: default all clean
+.PHONY: default all clean test
 
 
 default: $(TARGET)
@@ -56,4 +56,4 @@ $(OBJECTS_T): $(OUT_D)/%.o: $(TEST_D)/%.c $(HEADERS_T)
 	$(CC) -c -fpic $< -o $@
 
 $(TESTS): $(OBJECTS_T)
-	$(CC) $^ -o $@ -L$(OUT_D) -l$(T)
+	$(CC) $^ -o $@ -L$(OUT_D) -l$(LIB)
