@@ -74,4 +74,6 @@ def FlagsForFile(filename):
 
     return {
         'flags': final_flags,
-        'do_cache': True}
+        'do_cache': True
+    }
+
