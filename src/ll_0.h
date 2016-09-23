@@ -1,3 +1,6 @@
+#include "ll.h"
+
+
 int         LL_length        (nodePtr head);
 
 nodePtr     LL_last          (nodePtr head);

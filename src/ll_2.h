@@ -1,3 +1,6 @@
+#include "ll.h"
+
+
 nodePtr     LL_pushMany      (nodePtr* headPtr, LL_value_t* values, int count);
 
 LL_value_t* LL_popMany       (nodePtr* headPtr, int count);

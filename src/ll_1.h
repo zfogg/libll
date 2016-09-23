@@ -1,3 +1,6 @@
+#include "ll.h"
+
+
 nodePtr     LL_push          (nodePtr* headPtr, LL_value_t value);
 
 nodePtr     LL_append        (nodePtr* headPtr, LL_value_t value);

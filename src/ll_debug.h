@@ -1,3 +1,6 @@
+#include "ll.h"
+
+
 #define LL_LOGF_LOGSTRING       "n:[%p]->value[%c]\n"
 
 #define LL_LOGCOMPARE_LOGSTRING "n:[%p]->value[%c]\t"

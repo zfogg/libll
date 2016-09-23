@@ -1,8 +1,12 @@
+#include "../src/ll.h"
+
+
 #define WHITE_CC "\e[0m"
 
 #define GREEN_CC "\e[32m"
 
 #define RED_CC   "\e[31m"
+
 
 extern int LL_testResults;
 
