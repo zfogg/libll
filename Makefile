@@ -1,4 +1,4 @@
-#!/usr/bin/make -f
+#!/usr/bin/env make -f
 
 
 CC        := clang
@@ -38,12 +38,11 @@ all: default
 clean:
 	@echo 'cleaning...'
 	@find $(OUT_D) $(BIN_D) -mindepth 1 -not -iname '.gitignore' -delete -print
-	@echo 'done!
+	@echo 'done!'
 
 tests: all $(TESTS)
 test: tests
 	./$(TESTS)
-
 
 $(OBJECTS): $(OUT_D)/%.o: $(SRC_D)/%.c $(HEADERS)
 	$(CC) $(CFLAGS) -o $@ -c -fpic $<
